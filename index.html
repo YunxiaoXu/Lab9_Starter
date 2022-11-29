@@ -87,6 +87,13 @@
     </section>
   </main>
 
+  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+  <script>
+    window.TrackJS && TrackJS.install({ 
+      token: "8f6fc60a2f714b6d964e23eab4d18435"
+      // for more configuration options, see https://docs.trackjs.com
+    });
+  </script>
   <script>
     class MyError extends Error {
       constructor(message) {
@@ -129,6 +136,11 @@
     errorBtns[12].onclick = () => console.timeEnd("timer 1");
     errorBtns[13].onclick = () => (() => console.trace("This is trace"))();
     errorBtns[14].onclick = () => xxx;
+
+    window.onerror = () => {
+      console.log("A global error");
+      TrackJS.track('Testing TrackJS!');
+    }
   </script>
 </body>
 
