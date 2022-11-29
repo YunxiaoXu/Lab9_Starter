@@ -95,7 +95,13 @@
       let firstNum = document.querySelector('#first-num').value;
       let secondNum = document.querySelector('#second-num').value;
       let operator = document.querySelector('#operator').value;
-      output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
+      try {
+        output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
+      } catch (error) {
+        console.log("Invalid input:", {firstNum:firstNum, secondNum:secondNum});
+      } finally {
+        console.log("Finish Calculation!");
+      }
     });
     /** @type {HTMLButtonElement[]} */
     let errorBtns = Array.from(document.querySelectorAll('#error-btns > button'));
