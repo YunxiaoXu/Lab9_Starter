@@ -88,6 +88,12 @@
   </main>
 
   <script>
+    class MyError extends Error {
+      constructor(message) {
+        super(message);
+        this.name = "MyError";
+      }
+    }
     let form = document.querySelector('form');
     form.addEventListener('submit', e => {
       e.preventDefault();
@@ -98,7 +104,8 @@
       try {
         output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
       } catch (error) {
-        console.log("Invalid input:", {firstNum:firstNum, secondNum:secondNum});
+        console.log("Something wrong.");
+        throw new MyError("Invalid input!" + JSON.stringify({firstNum:firstNum, secondNum:secondNum}))
       } finally {
         console.log("Finish Calculation!");
       }
@@ -121,7 +128,7 @@
     errorBtns[11].onclick = () => console.time("timer 1");
     errorBtns[12].onclick = () => console.timeEnd("timer 1");
     errorBtns[13].onclick = () => (() => console.trace("This is trace"))();
-    errorBtns[14].onclick = () => console.error(xxx);
+    errorBtns[14].onclick = () => xxx;
   </script>
 </body>
 
