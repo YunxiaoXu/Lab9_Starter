@@ -97,11 +97,25 @@
       let operator = document.querySelector('#operator').value;
       output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
     });
-
+    /** @type {HTMLButtonElement[]} */
     let errorBtns = Array.from(document.querySelectorAll('#error-btns > button'));
 
     // Start your code here
-    // You may move this JS to another file if you wish
+    errorBtns[0].onclick = () => console.log("console log");
+    errorBtns[1].onclick = () => console.error("console error");
+    errorBtns[2].onclick = () => console.count("num clicks");
+    errorBtns[3].onclick = () => console.warn("console warn");
+    errorBtns[4].onclick = () => console.assert(1 + 1 != 2, [1, 1, "a+b=5?"]);
+    errorBtns[5].onclick = () => console.clear();
+    errorBtns[6].onclick = (e) => console.dir(document.body);
+    errorBtns[7].onclick = () => console.dirxml(document.body);
+    errorBtns[8].onclick = () => console.group("group 1");
+    errorBtns[9].onclick = () => console.groupEnd("group 1");
+    errorBtns[10].onclick = () => console.table({Alice:{age:10, gender:"female"},Bob:{age:12, gender:"male"}});
+    errorBtns[11].onclick = () => console.time("timer 1");
+    errorBtns[12].onclick = () => console.timeEnd("timer 1");
+    errorBtns[13].onclick = () => (() => console.trace("This is trace"))();
+    errorBtns[14].onclick = () => console.error(xxx);
   </script>
 </body>
 
